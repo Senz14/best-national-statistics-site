@@ -1,0 +1,133 @@
+/* NusaStat — original design. Deep teal header, warm amber accent, white cards. */
+
+:root {
+  --teal: #0b3d3a;
+  --teal-2: #0f524d;
+  --amber: #e8a317;
+  --ink: #1c2b29;
+  --muted: #5b6b68;
+  --line: #dfe7e4;
+  --bg: #f4f7f5;
+  --card: #ffffff;
+  --good: #1d7a4f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+header { background: var(--teal); color: #fff; }
+.head { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-top: 14px; }
+.brand { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px; color: #fff; text-decoration: none; }
+.brand span { color: var(--amber); }
+.tagline { color: #bfe3d9; font-size: 0.95rem; padding: 2px 20px 14px; }
+
+header nav { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 10px; }
+header nav a {
+  color: #dcefe9; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 0.95rem;
+}
+header nav a:hover { background: var(--teal-2); color: #fff; }
+header nav a.current { background: var(--amber); color: var(--teal); font-weight: 700; }
+
+main { padding: 28px 20px 40px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0.2em 0 0.4em; letter-spacing: -0.5px; }
+h2 { font-size: 1.3rem; margin: 1.6em 0 0.5em; border-bottom: 2px solid var(--amber); padding-bottom: 4px; }
+.lede { font-size: 1.1rem; color: #33423f; max-width: 62ch; }
+p { max-width: 72ch; }
+a { color: var(--teal-2); }
+a:hover { color: var(--good); }
+
+.source { color: var(--muted); font-size: 0.85rem; }
+.src { color: var(--muted); }
+
+/* KPI cards */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--amber);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.kpi:hover { box-shadow: 0 4px 16px rgba(11, 61, 58, 0.15); transform: translateY(-2px); }
+.kpi-label { display: block; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.kpi-value { display: block; font-size: 1.9rem; font-weight: 800; color: var(--teal); line-height: 1.15; }
+.kpi-note { display: block; font-size: 0.85rem; color: var(--muted); }
+
+/* Search */
+.search { display: block; font-weight: 600; margin: 18px 0 4px; }
+.search input {
+  display: block; width: 100%; max-width: 480px; margin-top: 6px;
+  padding: 10px 12px; font: inherit; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--card);
+}
+.search input:focus { outline: 2px solid var(--amber); border-color: var(--amber); }
+.empty { color: var(--muted); font-style: italic; }
+
+/* Tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.tab {
+  padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--card); color: var(--teal-2); text-decoration: none; font-size: 0.9rem;
+}
+.tab.active { background: var(--teal); color: #fff; border-color: var(--teal); font-weight: 700; }
+
+/* Charts */
+.chart { width: 100%; height: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.chart .grid { stroke: #e7eeeb; stroke-width: 1; }
+.chart .axis { font-size: 11px; fill: var(--muted); font-family: inherit; }
+.chart .line { stroke: var(--teal-2); stroke-width: 2.5; }
+.chart .area { fill: rgba(15, 82, 77, 0.1); }
+.chart .dot { fill: var(--amber); stroke: var(--teal); stroke-width: 1; }
+.chart .lastval { font-size: 13px; font-weight: 700; fill: var(--teal); font-family: inherit; }
+.chart .bar { fill: var(--teal-2); }
+.chart .barlabel { font-size: 12px; fill: var(--ink); font-family: inherit; }
+.chart .barval { font-size: 12px; font-weight: 700; fill: var(--teal); font-family: inherit; }
+
+/* Tables */
+table.data { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; }
+table.data th, table.data td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+table.data thead th { background: var(--teal); color: #fff; }
+table.data thead th a { color: #fff; text-decoration: none; display: block; }
+table.data thead th a.sorted { color: var(--amber); }
+table.data tbody tr:hover { background: #f0f6f3; }
+table.data td:nth-child(n+2) { font-variant-numeric: tabular-nums; }
+
+.releases { list-style: none; padding: 0; }
+.releases li {
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 8px;
+}
+
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; padding: 20px 0 28px; }
+
+/* Phone layout */
+@media (max-width: 720px) {
+  h1 { font-size: 1.55rem; }
+  .head { gap: 8px; }
+  header nav a { padding: 6px 8px; font-size: 0.9rem; }
+  .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi-value { font-size: 1.5rem; }
+  table.data { display: block; overflow-x: auto; }
+  .chart .barlabel { font-size: 11px; }
+}
+@media (max-width: 420px) {
+  .kpis { grid-template-columns: 1fr; }
+}
